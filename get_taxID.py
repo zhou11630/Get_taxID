@@ -4,11 +4,12 @@
 def qq邮箱发送提醒邮件(my_sender,my_pass,my_user,my_title,my_words):
     #!/usr/bin/python
     # -*- coding: UTF-8 -*-
-    # 教程：http://www.runoob.com/python/python-email.html
-    # my_sender='1163049951@qq.com'    # 发件人邮箱账号
-    # my_pass = 'muccjtxwcelxgjad'              # 发件人邮箱密码
-    # my_user='zhou11630@hotmail.com'      # 收件人邮箱账号，我这边发送给自己
-    # my_title='操作完成'     # 邮件主题为：操作完成
+    # this is a function of using qq-email to send you a remind email.
+    # you can get your own qq-email pass follow this blog：http://www.runoob.com/python/python-email.html
+    # my_sender='sender@qq.com'    # sender`s email 发件人邮箱账号
+    # my_pass = '**************'              # the pass you can get from qq-email 发件人邮箱密码
+    # my_user='accepter@hotmail.com'      # accepter`s email 收件人邮箱账号，我这边发送给自己
+    # my_title='operate done!'     # title of you email 邮件主题为：操作完成
 
     import smtplib
     import time
@@ -20,7 +21,7 @@ def qq邮箱发送提醒邮件(my_sender,my_pass,my_user,my_title,my_words):
         try:
             msg=MIMEText(my_words,'plain','utf-8')
             msg['From']=formataddr(["来自我的GCE服务器",my_sender])  # 括号里的对应发件人邮箱昵称、发件人邮箱账号
-            msg['To']=formataddr(["zhou gandalf",my_user])              # 括号里的对应收件人邮箱昵称、收件人邮箱账号
+            msg['To']=formataddr(["my_name",my_user])              # 括号里的对应收件人邮箱昵称、收件人邮箱账号
             msg['Subject']=my_title                # 邮件的主题，也可以说是标题
 
             server=smtplib.SMTP_SSL("smtp.qq.com", 465)  # 发件人邮箱中的SMTP服务器，端口是25
@@ -37,11 +38,11 @@ def qq邮箱发送提醒邮件(my_sender,my_pass,my_user,my_title,my_words):
     else:
         print("邮件发送失败")
 
-def NCBIpacong(var1):
+def NCBIpacong(var1):# get taxID from NCBI blast
     from Bio import Entrez
     from Bio.Blast import NCBIWWW, NCBIXML
 
-    Entrez.email = "1163049951@qq.com"     # Always tell NCBI who you are
+    Entrez.email = "!!!!!!!!!!@qq.com"     # Always tell NCBI who you are
     fasta_string = var1
     result_handle = NCBIWWW.qblast("blastn", "nt", fasta_string)
     blast_record = NCBIXML.read(result_handle)
@@ -62,9 +63,9 @@ def NCBIpacong(var1):
 import time
 
 # 设置通知邮箱信息
-my_sender='1163049951@qq.com'    # 发件人邮箱账号
-my_pass = 'muccjtxwcelxgjad'              # 发件人邮箱密码
-my_user='zhou11630@hotmail.com'      # 收件人邮箱账号，我这边发送给自己
+my_sender='sender@qq.com'    # 发件人邮箱账号
+my_pass = '!!!!!!!!'              # 发件人邮箱密码
+my_user='!!!!!!!!@hotmail.com'      # 收件人邮箱账号，我这边发送给自己
 my_title='开始计算'     # 邮件主题为：操作完成
 my_words=time.asctime( time.localtime(time.time()) )+'开始计算'
 # 在第二步中设置运行基因文件名“OTUs.fasta”
@@ -75,7 +76,7 @@ my_words=time.asctime( time.localtime(time.time()) )+'开始计算'
 my_words1=time.asctime( time.localtime(time.time()) )+'开始计算'+'\n'
 
 # 第二步：从基因文件中读取每个基因组信息
-f=open(r'1.1 OTUs.fasta', "r")
+f=open(r'1.1 OTUs.fasta', "r") # important: change this "1.1 OTUs.fasta" to your own fasta file
 i=-1#定义基因的序号
 jiyinzu_genes=[]#读取的基因组信息
 for index,line in enumerate(f.readlines()):#按行遍历文件，将每个基因信息存储到一个数组内；
